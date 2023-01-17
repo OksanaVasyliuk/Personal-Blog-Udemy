@@ -126,7 +126,6 @@ def logout():
 
 @app.route("/post/<int:post_id>")
 def show_post(post_id):
-
     requested_post = BlogPost.query.get(post_id)
     return render_template("post.html", post=requested_post, current_user=current_user,)
 
@@ -151,7 +150,7 @@ def add_new_post():
             subtitle=form.subtitle.data,
             body=form.body.data,
             img_url=form.img_url.data,
-            author="form.author.data",
+            author='Oksana Vasyliuk',
             date=date.today().strftime("%B %d, %Y")
         )
         db.session.add(new_post)
@@ -175,7 +174,7 @@ def edit_post(post_id):
         post.title = edit_form.title.data
         post.subtitle = edit_form.subtitle.data
         post.img_url = edit_form.img_url.data
-        post.author = 'edit_form.author.data'
+        post.author = 'Oksana Vasyliuk'
         post.body = edit_form.body.data
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
